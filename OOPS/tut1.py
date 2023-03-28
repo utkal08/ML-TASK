@@ -69,18 +69,24 @@ class Item:
 #item2.pay_rate =0.7
 #item2.apply_discount()
 #print(item2.price)
-@classmethod
-def instantiate_from_csv(cls):
-  with open('item.csv','r') as f:
+  @classmethod
+  def instantiate_from_csv(cls):
+    with open('item.csv','r') as f:
      reader =csv.DictReader(f)
      items =list(reader)
 
      for item in items:
-        print(item)
+        Item (
+           name =item.get('name'),
+           price=float(item.get('price')),
+           quantity=int(item.get('quantity')),
+        )
+    @staticmethod
+    def is_integer(self):
+           
      
-  def __repr__(self):
-   return f"Item('{self.name}',{self.price},{self.quantity})"
-
+     def __repr__(self):
+       return f"Item('{self.name}',{self.price},{self.quantity})"
 Item.instantiate_from_csv()
       
 #item1 =Item("phone",100,1)
